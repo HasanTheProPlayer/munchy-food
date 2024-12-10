@@ -6,32 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home page</title>
   <link rel="icon" href="images/Yellow Black Simple Modern Fast Food Logo (2).ico">
-  <link rel="stylesheet" href="css/indexstyle.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styleai.css">
+    <link rel="stylesheet" href="practice.css">
 </head>
 
 <body style="margin:0;">
 
-  <div style="display: flex;align-items:center; background:darkred;padding: 30px;">
-    <img style="padding-left: 10px;height: 50px;border-radius: 50%;"
-      src="images/Yellow Black Simple Modern Fast Food Logo (2).png" alt="">
-    <h1 style="margin: 0;padding-left: 18px;color: black;"><a style="text-decoration: none;color: black;"
-        href="food.html">Munchy food</h1></a>
-    <h1 style="margin: 0;padding-left: 550px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-      <a style="text-decoration: none;color: black;" href="foodmenu.html">Menu*
-    </h1></a>
-    <h1 style="margin-left: 15px;"><a style="text-decoration: none;color: black;" href="">About us*</a></h1>
-  </div>
+  <div style="display: flex; align-items: center; justify-content: space-between; background: darkred; padding: 30px;">
+    <!-- Logo and Title Section -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <img style="height: 100px; border-radius: 50%;border-radius: 50%;height: 100px;" src="images/Yellow Black Simple Modern Fast Food Logo (2).png" alt="Logo">
+        <h1 style="margin: 0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: black;">
+            <a style="text-decoration: none; color: black;" href="index.html">Munchy Food</a>
+        </h1>
+    </div>
 
-  <img src="images/cheese-burger-8770017_640.webp" alt="" height="400" width="1400">
-  <p style="font-size: larger;font-family: Verdana, Geneva, Tahoma, sans-serif;margin-left: 15px;color: red;">"Craving
+    <!-- Navigation Links Section -->
+    <div style="display: flex; gap: 20px;">
+        <h1 style="margin: 0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            <a style="text-decoration: none; color: black;" href="foodmenu.html">Menu*</a>
+        </h1>
+        <h1 style="margin: 0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            <a style="text-decoration: none; color: black;" href="#special">Special Menu*</a>
+        </h1>
+        <h1 style="margin: 0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            <a style="text-decoration: none; color: black;" href="Aboutus.html">About Us*</a>
+        </h1>
+    </div>
+</div>
+
+
+  <img style="margin-top: 20px; margin-left: 25px;margin-right: 20px;" src="images/Orange White Minimalist Photo Flowers Hello Spring Facebook Fundraiser Cover Photo.jpg" alt="" height="500" width="1300">
+  <p style="font-size: larger;margin-left: 15px;color: black;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">"Craving
     authentic Desi flavors? Look no further. Our fast-food joint offers a delicious
     range of traditional Pakistani dishes, served fresh and fast. From juicy burgers to
     crispy samosas, wehave something for everyone".</p>
   <h2
+  id="special"
     style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;margin-left: 580px;font-size: xx-large;font-style: oblique;">
     "SPECIAL MENU"</h2>
-  <div style="display: flex;gap: 12px;margin-top: 12px;">
+  <div style="display: flex;gap: 12px;margin-top: 12px;margin-left: 25px;">
     <div style="display: flex;flex-direction: column;">
       <a style="text-decoration: none" href="image1.html"><img src="images/350.jpeg" alt="" height="300" width="420">
         <p
@@ -65,7 +79,7 @@
     </div>
   </div>
   </div>
-  <div style="display: flex;gap: 12px;margin-top: 12px;">
+  <div style="display: flex;gap: 12px;margin-top: 12px;margin-left: 25px;">
     <div style="display: flex;flex-direction: column;">
       <a style="text-decoration: none" href="image4.html"><img src="images/images (3).jpeg" alt="" height="300" width="420">
         <p
@@ -99,7 +113,7 @@
     </div>
   </div>
   </div>
-  <div style="display: flex;gap: 12px;margin-top: 12px;">
+  <div style="display: flex;gap: 12px;margin-top: 12px;margin-left: 25px">
     <div style="display: flex;flex-direction: column;">
       <a style="text-decoration: none" href="image7.html"><img src="images/images (7).jpeg" alt="" height="300" width="420">
         <p
@@ -127,30 +141,108 @@
           style="font-size: x-large;color: black;margin-left: 2px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
           Falooda</p>
         <p style="font-size: large;color: black;margin-left: 2px;"> A refreshing dessert with vermicelli noodles, milk,
-          ice cream, and syrup.</p>
+          ice cream.</p>
         <p style="font-size: xx-large;color: black;margin-left: 2px;margin-top: 2px;"><del>350</del>300</p>
       </a>
     </div>
   </div>
   </div>
-  <div class="pg-footer">
-    <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
-      <div class="social" role="navigation" aria-labelledby="social-heading">
-        <h3 id="social-heading" class="sr-only">Follow us on social media</h3>
-        <a href="https://www.facebook.com/profile.php?id=61568120019446" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/munchy_f00d/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      </div>
-      <hr class="footer-break">
-      <ul class="footer-links" role="navigation" aria-labelledby="footer-links-heading">
-        <h3 id="footer-links-heading" class="sr-only">Footer Links</h3>
-        <li><a href="food.html">Site Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contents: <br>+92 324 0229203</a></li>
-      </ul>
-      <p class="copyright">© 2024 Munchy food king of fast food brands</p>
-    </footer>
-
-  </div>
+  <footer class="footer-section">
+    <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="cta-text">
+                            <h4>Address</h4>
+                            <span>North nazimabad karachi </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-phone"></i>
+                        <div class="cta-text">
+                            <h4>Call us</h4>
+                            <span>+92 324 0229203</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Mail us</h4>
+                            <span>farooqihassan993@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                        </div>
+                        <div class="footer-text">
+                            <p>Best fast food brand</p>
+                        </div>
+                        <img style="height: 50px; border-radius: 50%;border-radius: 50%;height: 50px;" src="images/Yellow Black Simple Modern Fast Food Logo (2).png" alt="Logo">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Useful Links</h3>
+                        </div>
+                        
+                            <li><a style="text-decoration: none;color: white;" href="index.html">Home</a></li>
+                            <li><a style="text-decoration: none;color: white" href="">Contact : +92 324 0229203 </a></li>
+                            <li><a style="text-decoration: none;color: white" href="Aboutus.html">About us </a></li>
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Follow us</h3>
+                        </div>
+                        <div class="footer-text mb-25">
+                                        </div>
+                                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                    <div class="copyright-text">
+                        <p style="margin-bottom: 10px;">Best fast food brand </a></p>
+                    </div>
+                    <a href="https://www.facebook.com/profile.php?id=61568120019446" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/munchy_f00d/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    <div class="footer-menu">
+                        <div><ul>
+                            <a href="https://www.facebook.com/profile.php?id=61568120019446" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <li><a href="https://www.instagram.com/munchy_f00d/">Instagram</a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=61568120019446">Facebook</a></li>
+                           
+                        </ul></div>
+                        <img style="height: 50px; border-radius: 50%;border-radius: 50%;height: 50px;margin-top: 10px;"  src="images/best insta face logo 3.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 </body>
