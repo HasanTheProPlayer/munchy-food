@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Van Animation Button</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f3f4f6;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.van {
+    position: absolute;
+    left: -200px;
+    transition: all 2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: #FF6347;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.message {
+    position: absolute;
+    top: 200px;
+    font-size: 24px;
+    color: green;
+    display: none;
+}
+
+.van img {
+    width: 100px;
+    height: 50px;
+}
+
+    </style>
+  
+</head>
+<body>
+
+<button id="purchaseBtn" onclick="startAnimation()">Click to Purchase</button>
+
+<div id="van" class="van">
+    <div id="box" class="box"></div>
+</div>
+
+<div id="purchaseMessage" class="message">Purchased</div>
+
+<script>
+    function startAnimation() {
+    const van = document.getElementById('van');
+    const box = document.getElementById('box');
+    const message = document.getElementById('purchaseMessage');
+
+    // Step 1: Slide van in
+    van.style.left = '50px';
+    // Step 2: Show the box in the van
+    setTimeout(() => {
+        box.style.opacity = 1;
+    }, 500);
+    
+    // Step 3: Move van across screen
+    setTimeout(() => {
+        van.style.left = '100vw'; // Move the van out of the view
+    }, 2000);
+
+    // Step 4: Show 'Purchased' message
+    setTimeout(() => {
+        message.style.display = 'block';
+    }, 4000);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+            
+         

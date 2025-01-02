@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/Yellow Black Simple Modern Fast Food Logo (2).ico">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .product-detail {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        .product-info {
+            max-width: 600px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.0);
+        }
+        .buy-button {
+            padding: 12px 30px;
+            background-color: green;
+            color: white;
+            font-size: 1.3em;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .buy-button:hover {
+            background-color:greenyellow ;
+        }
+    </style>
+    <title>Gola Kabab</title>
+</head>
+<body>
+
+    <div style="margin-top: -40px;" class="product-detail">
+        <div class="product-info">
+            <img style="height: 300px;" src="images/images food 25.jpeg" alt="" >
+            <h2 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Gola Kabab<h2>
+            <p>Juicy minced meat kababs served with chutney and onions.</p>
+            <strong>PKR 350</strong>
+            <form style="margin-top: -30px;margin-bottom: 20px;" action="detail.html" novalidate>
+                <h3 style="margin-top: 40px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Quantity:</h3>
+                <div style="margin-top: -10px;">
+                    <label style="margin-top: -9px;" for="quantity"></label>
+                    <input type="number" id="quantity" value="1" min="1" step="1">
+                </div>
+          <a href="detail.html"><button  style="margin-top: -5px;" class="buy-button">Buy</button></a>
+        </div>
+    </div>
+</body>
+</html>

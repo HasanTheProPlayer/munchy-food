@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1;
+        }
+
+        header {
+            background-color: #ffcc00;
+            color: #ff6f00;
+            padding: 10px 20px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        header:hover {
+            background-color: #ff9900;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffcc00;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ff6f00;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff3d00;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .banner img.active {
+            opacity: 1;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 2em;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: #fff3e0;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ffebc2;
+            padding: 20px;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            width: 300px;
+            z-index: 1000;
+            display: none;
+            transition: transform 0.3s ease;
+        }
+
+        .cart.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .cart h2 {
+            margin: 0;
+            color: #ff6f00;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .cart-items li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .cart-items li button {
+            background-color: #ff6f00;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-items li button:hover {
+            background-color: #ff3d00;
+        }
+
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .menu-item button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-item button:hover {
+            background-color: #ff3d00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex;">
+            <a href="Ai.html"> <img style="border-radius: 40px;margin-top: 10px;margin-left: 470px;" src="images/Yellow Black Simple Modern Fast Food Logo (2).png" alt="LOGO" width="60px" height="60px"></a>
+            <h1 style="margin-left: 20px;margin-top: 20px;">Munchy food</h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="Ai.html">Home</a>
+        <a href="Aimenu.html">Menu</a>
+        <a href="#footer">Contact Us</a>
+    </nav>
+
+    <div class="banner">
+        <img id="image1" src="images/cheese-burger-8770017_640.webp" alt="Cheese Burger" class="active">
+        <img id="image2" src="images/club-sandwich-3538455_640.jpg" alt="Club Sandwich">
+        <img id="image3" src="images/multiple%20fast%20food%20image%202.jpg" alt="Fast Food Variety">
+        <div class="content">
+            <p style="color: yellow;">Taste the traditional<br><br>Visit us today</p>
+            <div style="margin-top: 50px;">
+                <a href="https://www.facebook.com/munchyfood"><button type="button"><span></span>Visit us.</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="home" class="container">
+        <h2>Welcome to Pakistani Fast Food</h2>
+        <p>Enjoy the delicious flavors of Pakistan with our wide range of fast food items. From spicy samosas to juicy burgers, we have something for everyone!</p>
+    </div>
+
+    <div class="cart" id="cart">
+        <h2>Shopping Cart</h2>
+        <ul class="cart-items" id="cart-items"></ul>
+        <p class="cart-total" id="cart-total">Total: PKR 0</p>
+        <button onclick="clearCart()">Clear Cart</button>
+        <a href="detail.html"><button onclick="buyNow()">Buy</button></a>
+    </div>
+
+    <div id="menu" class="container">
+        <h2>Our Menu</h2>
+        <div class="menu">
+            <div class="menu-item">
+                <a href="imagefood1.html"><img src="images/image 1.jpeg" alt="Chicken Tikka Burger"></a>
+                <h3>Chicken Tikka Burger</h3>
+                <p>Juicy chicken tikka patty with desi spices served with fresh veggies and sauce. <strong>PKR 250</strong></p>
+                <div><button onclick="addToCart('Chicken Tikka Burger', 250)">Add to Cart</button></div>
+            </div>
+            <!-- Other menu items will follow the same structure -->
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Pakistani Fast Food offers a variety of delicious dishes inspired by the rich flavors of Pakistan.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: farooqihassan993@gmail.com</li>
+                    <li>Phone: +92 324 0229203</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/munchyfood">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/munchy_f00d/">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.banner img');
+
+        function slideImages() {
+            const currentImage = images[currentImageIndex];
+            currentImage.classList.remove('active');
+            currentImage.classList.add('fade-out');
+            setTimeout(() => currentImage.classList.remove('fade-out'), 1000);
+
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            const nextImage = images[currentImageIndex];
+            nextImage.classList.add('active');
+        }
+
+        setInterval(slideImages, 5000);
+
+        function toggleCart() {
+            document.getElementById('cart').classList.toggle('show');
+        }
+
+        let cart = [];
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.item} - PKR ${item.price} <button onclick="removeFromCart('${item.item}')">Remove</button>`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+
+            document.getElementById('cart-total').textContent = `Total: PKR ${total}`;
+        }
+
+        function removeFromCart(itemName) {
+            cart = cart.filter(item => item.item !== itemName);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function buyNow() {
+            alert("Proceeding to checkout!");
+        }
+    </script>
+</body>
+</html>
+

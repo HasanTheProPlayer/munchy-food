@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link rel="icon" href="images/Yellow Black Simple Modern Fast Food Logo (2).ico">
+</head>
+<body>
+    <form id="orderForm" style="margin-left:500px;margin-top: 150px;size: 100px;" action="cong.html" autocomplete="on">
+        <label style="font-size: 20px;" for="name">Enter Name</label><br>
+        <input style="width: 300px;height: 30px;" type="text" id="name" required><br>
+        <label style="font-size: 20px;" for="gmail">Enter G-Mail</label><br>
+        <input style="width: 300px;height: 30px;" type="email" id="gmail" required><br>
+        <label style="font-size: 20px;" for="address">Enter Address</label><br>
+        <input style="width: 300px;height: 30px;" type="text" id="address" required><br>
+        <button type="submit" style="cursor: pointer;font-size: larger;background-color: green;margin-right: 0px;padding: 10px 24px;width: 152px;border: none;border-radius: 160px;margin-top: 30px;margin-left: 190px;">Submit</button>
+    </form>
+
+    <script>
+        const orderForm = document.getElementById('orderForm');
+
+        // Event listener for form submission
+        orderForm.addEventListener('submit', function(event) {
+            // Get the values of the fields
+            const name = document.getElementById('name').value;
+            const gmail = document.getElementById('gmail').value;
+            const address = document.getElementById('address').value;
+
+            // Check if any of the fields are empty
+            if (!name || !gmail || !address) {
+                alert("Please fill in all fields before submitting.");
+                event.preventDefault(); // Prevent form submission if fields are empty
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1;
+        }
+
+        header {
+            background-color: #ffcc00;
+            color: #ff6f00;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffcc00;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ff6f00;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff3d00;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: #fff3e0;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item h3 {
+            color: #ff6f00;
+        }
+
+        .menu-item p {
+            color: #333;
+        }
+
+        footer {
+            background-color: #ffcc00;
+            color: #ff6f00;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        footer .footer-section h4 {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        footer .footer-section ul li a {
+            color: #ff6f00;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #ff3d00;
+        }
+    
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ffebc2;
+            padding: 20px;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            width: 300px;
+            z-index: 1000;
+        }
+
+        .cart h2 {
+            margin: 0;
+            color: #ff6f00;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .cart-items li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .cart-items li button {
+            background-color: #ff6f00;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-items li button:hover {
+            background-color: #ff3d00;
+        }
+
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .menu-item button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .menu-item button:hover {
+            background-color: #ff3d00;
+        }
+    </style>
+    <link rel="icon" href="images/Yellow Black Simple Modern Fast Food Logo (2).ico">
+    <link rel="stylesheet" href="practiceweb.css">
+</head>
+<body>
+    <header>
+        <div style="display: flex;">
+            <img style="border-radius: 40px;margin-top: 10px;margin-left: 470px;" src="images/Yellow Black Simple Modern Fast Food Logo (2).png" alt="LOGO" width="60px" height="60px">
+            <h1 style="margin-left: 20px;margin-top: 20px;">Munchy Food</h1>
+        </div>
+    </header>
+    <nav>
+        <a href="Ai.html">Home</a>
+        <a href="Aimenu.html">Menu</a>
+        <a href="#footer">Contact Us</a>
+    </nav>
+    <div id="home" class="container">
+        <h2>Welcome to Pakistani Fast Food</h2>
+        <p>Enjoy the delicious flavors of Pakistan with our wide range of fast food items. From spicy samosas to juicy burgers, we have something for everyone! Prices start from just PKR 50!</p>
+    </div>
+    <div class="cart" id="cart">
+        <h2>Shopping Cart</h2>
+        <ul class="cart-items" id="cart-items"></ul>
+        <p class="cart-total" id="cart-total">Total: PKR 0</p>
+        <button onclick="clearCart()">Clear Cart</button>
+    </div>
+    <div id="menu" class="container">
+        <h2>Our Menu</h2>
+        <div class="menu">
+            <div class="menu-item">
+                <a href="imagefood1.html"><img src="images/image 1.jpeg" alt="Chicken Tikka Burger"></a>
+                <h3>Chicken Tikka Burger</h3>
+                <p>Juicy chicken tikka patty with desi spices served with fresh veggies and sauce. <strong>PKR 250</strong></p>
+              <div><button onclick="addToCart('Chicken Tikka Burger', 250)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 2.html"><img src="images/image 2.jpeg" alt="Seekh Kebab Roll"></a>
+                <h3>Seekh Kebab Roll</h3>
+                <p>Succulent seekh kebabs wrapped in a soft paratha with mint chutney. <strong>PKR 200</strong></p>
+               <div><button onclick="addToCart('Seekh kabab Roll', 200)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 3.html"> <img src="images/image 3.jpeg" alt="Zinger Burger"></a>
+                <h3>Zinger Burger</h3>
+                <p>Crunchy zinger fillet with spicy mayo and fresh lettuce in a toasted bun. <strong>PKR 300</strong></p>
+                <button onclick="addToCart('Zingur burgur', 300)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+               <a href="image food 4.html"> <img src="images/images food 4.jpeg" alt="Biryani Box"></a>
+                <h3>Biryani Box</h3>
+                <p>Flavorful chicken biryani served with raita and salad. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Biryani Box', 180)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 5.html"> <img src="images/images food 5.jpeg" alt="Masala Fries"></a>
+                <h3>Masala Fries</h3>
+                <p>Golden fries sprinkled with tangy chaat masala for a zesty kick. <strong>PKR 120</strong></p>
+                <div><button onclick="addToCart('Masalafries', 120)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 6.html"><img src="images/images food 6.jpeg" alt="Shami Burger"></a>
+                <h3>Shami Burger</h3>
+                <p>Traditional shami kebab with chutney and fresh onions in a soft bun. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Shami burgur', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 7.html"> <img src="images/images food 7.jpeg" alt="Chapli Kebab Wrap"></a>
+                <h3>Chapli Kebab Wrap</h3>
+                <p>Spicy chapli kebab rolled in a fresh naan with green chutney. <strong>PKR 220</strong></p>
+                <div><button onclick="addToCart('Chapli kabab wrap', 220)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 8.html"><img src="images/images food 8.jpeg" alt="Paneer Tikka Pizza"></a>
+                <h3>Paneer Tikka Pizza</h3>
+                <p>Cheesy pizza topped with flavorful paneer tikka and desi spices. <strong>PKR 400</strong></p>
+                <div><button onclick="addToCart('paneer tikka pizza', 400)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 9.html">  <img src="images/images food 9.jpeg" alt="Malai Boti Roll"></a>
+                <h3>Malai Boti Roll</h3>
+                <p>Soft paratha filled with creamy malai boti and a hint of lemon. <strong>PKR 240</strong></p>
+                <div><button onclick="addToCart('malai boti roll', 240)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 10.html"><img src="images/images food 10.jpeg" alt="Aloo Samosa"></a>
+                <h3>Aloo Samosa</h3>
+                <p>Classic crispy samosas filled with spiced mashed potatoes. <strong>PKR 50</strong></p>
+                <div><button onclick="addToCart('Aloo samosa', 50)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 11.html"> <img src="images/images food 11.jpeg" alt="Beef Biryani"></a>
+                <h3>Beef Biryani</h3>
+                <p>Rich and aromatic beef biryani served with raita. <strong>PKR 200</strong></p>
+                <div><button onclick="addToCart('Beef Biryani', 200)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 12.html"><img src="images/images food 12.jpeg" alt="Chicken Shawarma"></a>
+                <h3>Chicken Shawarma</h3>
+                <p>Deliciously seasoned chicken wrapped in pita bread with garlic sauce. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Chicken Shawarma', 180)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 13.html"> <img src="images/images food 13.jpeg" alt="Pakora Platter"></a>
+                <h3>Pakora Platter</h3>
+                <p>Assorted crispy pakoras served with tamarind chutney. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Pakoora platter', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 14.html"><img src="images/images food 14.jpeg" alt="Gol Gappay"></a>
+                <h3>Gol Gappay</h3>
+                <p>Crunchy puris filled with tangy tamarind water and chickpeas. <strong>PKR 100</strong></p>
+                <div><button onclick="addToCart('Gol gappay', 100)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 15.html"><img src="images/images food 15.jpeg" alt="Chana Chaat"></a>
+                <h3>Chana Chaat</h3>
+                <p>Spicy and tangy chickpea salad with fresh veggies and chutneys. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Chana chaat', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 16.html"><img src="images/images food 16.jpeg" alt="Haleem Bowl"></a>
+                <h3>Haleem Bowl</h3>
+                <p>Warm and hearty haleem topped with fried onions and lemon. <strong>PKR 250</strong></p>
+                <div><button onclick="addToCart('Haleem bowl', 250)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+             <a href="image food 17.html"><img src="images/images food 17.jpeg" alt="Nihari"></a>
+                <h3>Nihari</h3>
+                <p>Slow-cooked beef stew served with naan and garnished with ginger. <strong>PKR 300</strong></p>
+                <div><button onclick="addToCart('Nihari', 300)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 18.html"><img src="images/images food 18.jpeg" alt="Karachi Bun Kebab"></a>
+                <h3>Karachi Bun Kebab</h3>
+                <p>Spicy bun kebab with chutney, onions, and a fried egg. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Karachi bun kabab', 180)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 19.html"><img src="images/images food 19.jpeg" alt="Chicken Karahi"></a>
+                <h3>Chicken Karahi</h3>
+                <p>Traditional chicken karahi cooked with tomatoes and spices. <strong>PKR 500</strong></p>
+                <div><button onclick="addToCart('Chicken karahi', 500)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 20.html"> <img src="images/images food 20.jpeg" alt="Chicken Wings"></a>
+                <h3>Chicken Wings</h3>
+                <p>Spicy grilled chicken wings served with a tangy dip. <strong>PKR 280</strong></p>
+                <div><button onclick="addToCart('Chicken wings', 280)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 21.html"><img src="images/images food 21.jpeg" alt="Paratha Roll"></a>
+                <h3>Paratha Roll</h3>
+                <p>Hot and crispy paratha stuffed with spicy chicken. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Paratha Roll', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 22.html"><img src="images/images food 22.jpeg" alt="Paneer Wrap"></a>
+                <h3>Paneer Wrap</h3>
+                <p>Grilled paneer cubes rolled in fresh roti with veggies. <strong>PKR 200</strong></p>
+                <div><button onclick="addToCart('Paneer wrap', 200)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 23.html"><img src="images/images food 23.jpeg" alt="Szechuan Noodles"></a>
+                <h3>Szechuan Noodles</h3>
+                <p>Spicy and tangy noodles cooked with chicken and veggies. <strong>PKR 350</strong></p>
+                <div><button onclick="addToCart('Szechuan noodles', 350)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 24.html"><img src="images/images food 24.jpeg" alt="Fried Rice"></a>
+                <h3>Fried Rice</h3>
+                <p>Flavorful fried rice with chicken and vegetables. <strong>PKR 300</strong></p>
+                <div><button onclick="addToCart('Fried rice', 300)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 25.html"><img src="images/images food 25.jpeg" alt="Gola Kabab"></a>
+                <h3>Gola Kabab</h3>
+                <p>Juicy minced meat kababs served with chutney and onions. <strong>PKR 350</strong></p>
+                <div><button onclick="addToCart('Gola kabab', 350)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 26.html">  <img src="images/images food 26.jpeg" alt="Chicken Pulao"></a>
+                <h3>Chicken Pulao</h3>
+                <p>Delicious chicken pulao cooked with fragrant basmati rice. <strong>PKR 280</strong></p>
+                <div><button onclick="addToCart('Chicken pulao', 280)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 27.html">  <img src="images/imaegs food 27.jpeg" alt="Chicken Tikka"></a>
+                <h3>Chicken Tikka</h3>
+                <p>Succulent chicken pieces grilled to perfection. <strong>PKR 400</strong></p>
+                <div><button onclick="addToCart('Chicken Tikka', 400)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 28.html">  <img src="images/images food 28.jpeg" alt="Fish Pakoras"></a>
+                <h3>Fish Pakoras</h3>
+                <p>Crispy fish fritters served with tamarind sauce. <strong>PKR 250</strong></p>
+                <div><button onclick="addToCart('Fish pakoras', 250)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 29.html">  <img src="images/images food 29.jpeg" alt="Gulab Jamun"></a>
+                <h3>Gulab Jamun</h3>
+                <p>Soft and syrupy traditional dessert. <strong>PKR 80</strong></p>
+                <div><button onclick="addToCart('Gulab jamun', 80)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 30.html">  <img src="images/images food 30.jpeg" alt="Kulfi"></a>
+                <h3>Kulfi</h3>
+                <p>Creamy frozen dessert with traditional flavors. <strong>PKR 100</strong></p>
+                <div><button onclick="addToCart('Kulfi', 100)">Add to Cart</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="menu" class="container">
+        <div class="menu">
+            <div class="menu-item">
+                <a href="image food 31.html"><img src="images/images food 31.jpeg" alt="Chicken Nachos"></a>
+                <h3>Chicken Nachos</h3>
+                <p>Crispy nachos topped with spicy chicken and melted cheese. <strong>PKR 300</strong></p>
+                <div><button onclick="addToCart('Chicken Nachos', 300)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 32.html"></a><img src="images/images food 32.jpeg" alt="Beef Shawarma"></a>
+                <h3>Beef Shawarma</h3>
+                <p>Seasoned beef wrapped in pita bread with tahini sauce. <strong>PKR 220</strong></p>
+                <div><button onclick="addToCart('Beef shawarma', 220)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 33.html"></a><img src="images/images food 33.jpeg" alt="Paneer Paratha"></a>
+                <h3>Paneer Paratha</h3>
+                <p>Stuffed flatbread with spiced paneer filling. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Paneer paratha', 180)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 34.html"></a><img src="images/images food 34.jpeg" alt="Grilled Sandwich"></a>
+                <h3>Grilled Sandwich</h3>
+                <p>Delicious grilled sandwich filled with veggies and cheese. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Grilled sandwitch', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 35.html"></a><img src="images/images food 35.jpeg" alt="Chilli Garlic Wings"></a>
+                <h3>Chilli Garlic Wings</h3>
+                <p>Hot and spicy wings tossed in a chilli garlic sauce. <strong>PKR 350</strong></p>
+                <div><button onclick="addToCart('Chilli garlic wings', 350)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 36.html"></a><img src="images/images food 36.jpeg" alt="Veggie Burger"></a>
+                <h3>Veggie Burger</h3>
+                <p>Fresh veggies and spicy patty in a toasted bun. <strong>PKR 250</strong></p>
+                <div><button onclick="addToCart('Veggie burgur', 250)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 37.html"></a><img src="images/images food 37.jpeg" alt="Beef Steak"></a>
+                <h3>Beef Steak</h3>
+                <p>Juicy grilled beef steak served with mashed potatoes. <strong>PKR 700</strong></p>
+                <div><button onclick="addToCart('Beef steak', 700)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 38.html"></a><img src="images/images food 38.jpeg" alt="Chocolate Cake"></a>
+                <h3>Chocolate Cake</h3>
+                <p>Rich and moist chocolate cake. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Chocolate cake', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 39.html"></a><img src="images/images food 39.jpeg" alt="Fruit Chaat"></a>
+                <h3>Fruit Chaat</h3>
+                <p>Refreshing mix of seasonal fruits with tangy spices. <strong>PKR 120</strong></p>
+                <div><button onclick="addToCart('fruit chaat', 120)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 40.html"></a><img src="images/images food 40.jpeg" alt="Falooda"></a>
+                <h3>Falooda</h3>
+                <p>Traditional sweet dessert with rose syrup and vermicelli. <strong>PKR 200</strong></p>
+                <div><button onclick="addToCart('Falooda', 200)">Add to Cart</button></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Pakistani Fast Food offers a variety of delicious dishes inspired by the rich flavors of Pakistan.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: farooqihassan993@gmail.com</li>
+                    <li>Phone: +92 324 0229203</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/munchyfood">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/munchy_f00d/">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            // Add item to cart
+            cart.push({ name: itemName, price: itemPrice });
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            // Remove item from cart
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+
+            // Clear current cart items
+            cartItemsContainer.innerHTML = '';
+
+            // Add each cart item
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${item.name} - PKR ${item.price}
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(li);
+            });
+
+            // Update total
+            cartTotalElement.textContent = `Total: PKR ${total}`;
+        }
+
+        function clearCart() {
+            // Clear the cart
+            cart.length = 0;
+            updateCart();
+        }
+    </script>
+</body>
+</html>

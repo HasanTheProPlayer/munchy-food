@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1;
+        }
+
+        header {
+            background-color: #ffcc00;
+            color: #ff6f00;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffcc00;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ff6f00;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff3d00;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        /*menu item card*/
+        .menu-item {
+            background-color: #fff3e0;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item h3 {
+            color: #ff6f00;
+        }
+
+        .menu-item p {
+            color: #333;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .banner img.active {
+            opacity: 1;
+        }
+
+        .banner img.slide-out {
+            animation: slideOut 1s forwards;
+        }
+
+        .banner img.slide-in {
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideOut {
+            0% {
+                transform: translate(-50%, -50%) translateX(0);
+            }
+            100% {
+                transform: translate(-50%, -50%) translateX(-100%);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translate(-50%, -50%) translateX(100%);
+            }
+            100% {
+                transform: translate(-50%, -50%) translateX(0);
+            }
+        }
+
+        .banner .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .banner .content p {
+            font-size: 50px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .deals-section {
+            background-color: #ffebc2;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .deals-section h2 {
+            color: #ff6f00;
+        }
+
+        .deals-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .deals-section ul li {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        footer {
+            background-color: #ffcc00;
+            color: #ff6f00;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        footer .footer-section h4 {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        footer .footer-section ul li a {
+            color: #ff6f00;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #ff3d00;
+        }
+        .cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ffebc2;
+    padding: 20px;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    width: 300px;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+
+        .cart h2 {
+            margin: 0;
+            color: #ff6f00;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .cart-items li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .cart-items li button {
+            background-color: #ff6f00;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-items li button:hover {
+            background-color: #ff3d00;
+        }
+
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .menu-item button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .menu-item button:hover {
+            background-color: #ff3d00;
+        }
+    </style>
+    <link rel="icon" href="images/Yellow Black Simple Modern Fast Food Logo (2).ico">
+    <link rel="stylesheet" href="practiceweb.css">
+</head>
+<body>
+    <header>
+        <div style="display: flex;">
+           <a href="Ai.html"> <img style="border-radius: 40px;margin-top: 10px;margin-left: 470px;" src="images/Yellow Black Simple Modern Fast Food Logo (2).png" alt="LOGO" width="60px" height="60px"></a>
+            <h1 style="margin-left: 20px;margin-top: 20px;">Munchy food</h1>
+        </div>
+    </header>
+    <nav>
+        <a href="Ai.html">Home</a>
+        <a href="Aimenu.html">Menu</a>
+        <a href="#footer">Contact Us</a>
+    </nav>
+    <div class="banner">
+        <img id="image1" src="images/cheese-burger-8770017_640.webp" alt="Cheese Burger" class="active">
+        <img id="image2" src="images/club-sandwich-3538455_640.jpg" alt="Club Sandwich">
+        <img id="image3" src="images/multiple%20fast%20food%20image%202.jpg" alt="Fast Food Variety">
+        <div class="content">
+            <p style="color: yellow;">Taste the traditional<br><br>Visit us today</p>
+            <div style="margin-top: 50px;">
+                <a href="https://www.facebook.com/munchyfood"><button type="button"><span></span>Visit us.</button></a>
+            </div>
+        </div>
+    </div>
+    <div id="home" class="container">
+        <h2>Welcome to Pakistani Fast Food</h2>
+        <p>Enjoy the delicious flavors of Pakistan with our wide range of fast food items. From spicy samosas to juicy burgers, we have something for everyone!</p>
+    </div>
+    <div class="cart" id="cart">
+        <h2>Shopping Cart</h2>
+        <ul class="cart-items" id="cart-items"></ul>
+        <p class="cart-total" id="cart-total">Total: PKR 0</p>
+        <button onclick="clearCart()">Clear Cart</button>
+        <a href="detail.html"><button onclick="buyNow()">Buy</button></a>
+    </div>
+    <div id="menu" class="container">
+        <h2>Our Menu</h2>
+        <div class="menu">
+            <div class="menu-item">
+                <a href="imagefood1.html"><img src="images/image 1.jpeg" alt="Chicken Tikka Burger"></a>
+                <h3>Chicken Tikka Burger</h3>
+                <p>Juicy chicken tikka patty with desi spices served with fresh veggies and sauce. <strong>PKR 250</strong></p>
+              <div><button onclick="addToCart('Chicken Tikka Burger', 250)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+                <a href="image food 2.html"><img src="images/image 2.jpeg" alt="Seekh Kebab Roll"></a>
+                <h3>Seekh Kebab Roll</h3>
+                <p>Succulent seekh kebabs wrapped in a soft paratha with mint chutney. <strong>PKR 200</strong></p>
+               <div><button onclick="addToCart('Seekh kabab Roll', 200)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 3.html"> <img src="images/image 3.jpeg" alt="Zinger Burger"></a>
+                <h3>Zinger Burger</h3>
+                <p>Crunchy zinger fillet with spicy mayo and fresh lettuce in a toasted bun. <strong>PKR 300</strong></p>
+                <button onclick="addToCart('Zingur burgur', 300)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+               <a href="image food 4.html"> <img src="images/images food 4.jpeg" alt="Biryani Box"></a>
+                <h3>Biryani Box</h3>
+                <p>Flavorful chicken biryani served with raita and salad. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Biryani Box', 180)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 5.html"> <img src="images/images food 5.jpeg" alt="Masala Fries"></a>
+                <h3>Masala Fries</h3>
+                <p>Golden fries sprinkled with tangy chaat masala for a zesty kick. <strong>PKR 120</strong></p>
+                <div><button onclick="addToCart('Masalafries', 120)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 6.html"><img src="images/images food 6.jpeg" alt="Shami Burger"></a>
+                <h3>Shami Burger</h3>
+                <p>Traditional shami kebab with chutney and fresh onions in a soft bun. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Shami burgur', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 7.html"> <img src="images/images food 7.jpeg" alt="Chapli Kebab Wrap"></a>
+                <h3>Chapli Kebab Wrap</h3>
+                <p>Spicy chapli kebab rolled in a fresh naan with green chutney. <strong>PKR 220</strong></p>
+                <div><button onclick="addToCart('Chapli kabab wrap', 220)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 8.html"><img src="images/images food 8.jpeg" alt="Paneer Tikka Pizza"></a>
+                <h3>Paneer Tikka Pizza</h3>
+                <p>Cheesy pizza topped with flavorful paneer tikka and desi spices. <strong>PKR 400</strong></p>
+                <div><button onclick="addToCart('paneer tikka pizza', 400)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 9.html">  <img src="images/images food 9.jpeg" alt="Malai Boti Roll"></a>
+                <h3>Malai Boti Roll</h3>
+                <p>Soft paratha filled with creamy malai boti and a hint of lemon. <strong>PKR 240</strong></p>
+                <div><button onclick="addToCart('malai boti roll', 240)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 10.html"><img src="images/images food 10.jpeg" alt="Aloo Samosa"></a>
+                <h3>Aloo Samosa</h3>
+                <p>Classic crispy samosas filled with spiced mashed potatoes. <strong>PKR 50</strong></p>
+                <div><button onclick="addToCart('Aloo samosa', 50)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 11.html"> <img src="images/images food 11.jpeg" alt="Beef Biryani"></a>
+                <h3>Beef Biryani</h3>
+                <p>Rich and aromatic beef biryani served with raita. <strong>PKR 200</strong></p>
+                <div><button onclick="addToCart('Beef Biryani', 200)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 12.html"><img src="images/images food 12.jpeg" alt="Chicken Shawarma"></a>
+                <h3>Chicken Shawarma</h3>
+                <p>Deliciously seasoned chicken wrapped in pita bread with garlic sauce. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Chicken Shawarma', 180)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+               <a href="image food 13.html"> <img src="images/images food 13.jpeg" alt="Pakora Platter"></a>
+                <h3>Pakora Platter</h3>
+                <p>Assorted crispy pakoras served with tamarind chutney. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Pakoora platter', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 14.html"><img src="images/images food 14.jpeg" alt="Gol Gappay"></a>
+                <h3>Gol Gappay</h3>
+                <p>Crunchy puris filled with tangy tamarind water and chickpeas. <strong>PKR 100</strong></p>
+                <div><button onclick="addToCart('Gol gappay', 100)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 15.html"><img src="images/images food 15.jpeg" alt="Chana Chaat"></a>
+                <h3>Chana Chaat</h3>
+                <p>Spicy and tangy chickpea salad with fresh veggies and chutneys. <strong>PKR 150</strong></p>
+                <div><button onclick="addToCart('Chana chaat', 150)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 16.html"><img src="images/images food 16.jpeg" alt="Haleem Bowl"></a>
+                <h3>Haleem Bowl</h3>
+                <p>Warm and hearty haleem topped with fried onions and lemon. <strong>PKR 250</strong></p>
+                <div><button onclick="addToCart('Haleem bowl', 250)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+             <a href="image food 17.html"><img src="images/images food 17.jpeg" alt="Nihari"></a>
+                <h3>Nihari</h3>
+                <p>Slow-cooked beef stew served with naan and garnished with ginger. <strong>PKR 300</strong></p>
+                <div><button onclick="addToCart('Nihari', 300)">Add to Cart</button></div>
+            </div>
+            <div class="menu-item">
+              <a href="image food 18.html"><img src="images/images food 18.jpeg" alt="Karachi Bun Kebab"></a>
+                <h3>Karachi Bun Kebab</h3>
+                <p>Spicy bun kebab with chutney, onions, and a fried egg. <strong>PKR 180</strong></p>
+                <div><button onclick="addToCart('Karachi bun kabab', 180)">Add to Cart</button></div>
+            </div>
+            </div>
+            <div class="deals-section">
+                <h2>Today's Deals</h2>
+                <ul>
+                    <li>Get 2 veggie Burgers for the price of 1!</li>
+                    <li>Free fries with every large pizza order.</li>
+                    <li>20% off on all rolls from 5 PM to 8 PM.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>27 Dec 2024</h2>
+                <ul>
+                    <li>15% off on all pizzas.</li>
+                    <li>Free soft drink with any sandwich order.</li>
+                    <li>Buy one Zinger burger, get a free Masala fries.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>26 Dec 2024</h2>
+                <ul>
+                    <li>Free delivery on orders over $10.</li>
+                    <li>25% off on all combo meals.</li>
+                    <li>Buy one, get one free on all desserts.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>25 Dec 2024</h2>
+                <ul>
+                    <li>50% off on all burgers.</li>
+                    <li>Free fries with every pizza order above $15.</li>
+                    <li>Buy any sandwich, get a free drink.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>24 Dec 2024</h2>
+                <ul>
+                    <li>Free side dish with every meal.</li>
+                    <li>20% off on all wraps and rolls.</li>
+                    <li>Free dessert with every order above $12.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>23 Dec 2024</h2>
+                <ul>
+                    <li>Buy one, get one free on all zinger burgers.</li>
+                    <li>25% off on large pizzas.</li>
+                    <li>Free soft drink with every order above $10.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>22 Dec 2024</h2>
+                <ul>
+                    <li>Free fries with every burger order.</li>
+                    <li>10% off on all family combos.</li>
+                    <li>20% off on all drinks.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>21 Dec 2024</h2>
+                <ul>
+                    <li>Free delivery on all orders above $20.</li>
+                    <li>15% off on all platters.</li>
+                    <li>Get 2 samosas for free with every meal above $15.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>20 Dec 2024</h2>
+                <ul>
+                    <li>10% off on all orders above $10.</li>
+                    <li>Buy 1 pizza, get a free drink.</li>
+                    <li>Free side with every sandwich.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>19 Dec 2024</h2>
+                <ul>
+                    <li>15% off on all burgers and wraps.</li>
+                    <li>Free fries with any pizza.</li>
+                    <li>20% off on all drinks.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>18 Dec 2024</h2>
+                <ul>
+                    <li>Free delivery on orders above $15.</li>
+                    <li>25% off on all rolls.</li>
+                    <li>Buy one burger, get a free side dish.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>17 Dec 2024</h2>
+                <ul>
+                    <li>Free drink with every meal order.</li>
+                    <li>20% off on all platters.</li>
+                    <li>Free fries with pizza orders above $10.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>16 Dec 2024</h2>
+                <ul>
+                    <li>15% off on all sandwiches.</li>
+                    <li>Free dessert with every burger order above $12.</li>
+                    <li>Buy any two rolls, get a free drink.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>15 Dec 2024</h2>
+                <ul>
+                    <li>Buy one zinger burger, get a free fries.</li>
+                    <li>25% off on all combo meals.</li>
+                    <li>Free delivery on orders above $20.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>14 Dec 2024</h2>
+                <ul>
+                    <li>Free soft drink with every meal.</li>
+                    <li>20% off on all pizzas.</li>
+                    <li>Buy 1, get 1 free on selected burgers.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>13 Dec 2024</h2>
+                <ul>
+                    <li>Buy 1 pizza, get a free side dish.</li>
+                    <li>15% off on all platters.</li>
+                    <li>Free fries with every burger order above $15.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>12 Dec 2024</h2>
+                <ul>
+                    <li>Free delivery on orders above $15.</li>
+                    <li>25% off on all rolls and wraps.</li>
+                    <li>Free dessert with every pizza order.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>11 Dec 2024</h2>
+                <ul>
+                    <li>20% off on all orders above $12.</li>
+                    <li>Free drink with every meal.</li>
+                    <li>Buy any sandwich, get a free fries.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>10 Dec 2024</h2>
+                <ul>
+                    <li>Buy 1 zinger burger, get 1 free.</li>
+                    <li>Free dessert with any pizza order.</li>
+                    <li>25% off on combo meals.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>9 Dec 2024</h2>
+                <ul>
+                    <li>15% off on all burgers.</li>
+                    <li>Free fries with every large pizza order.</li>
+                    <li>Buy any meal, get a free drink.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>8 Dec 2024</h2>
+                <ul>
+                    <li>Free delivery on all orders above $20.</li>
+                    <li>20% off on all rolls and wraps.</li>
+                    <li>Free soft drink with every burger order.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>7 Dec 2024</h2>
+                <ul>
+                    <li>Buy 1 pizza, get a free drink.</li>
+                    <li>25% off on all platters.</li>
+                    <li>Free fries with any sandwich order.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>6 Dec 2024</h2>
+                <ul>
+                    <li>10% off on all orders above $10.</li>
+                    <li>Free dessert with any meal above $15.</li>
+                    <li>Buy 1, get 1 free on all rolls.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>5 Dec 2024</h2>
+                <ul>
+                    <li>50% off on all burgers.</li>
+                    <li>Free soft drink with any pizza order.</li>
+                    <li>Buy any meal, get a free dessert.</li>
+                </ul>
+            </div>
+            
+            <div class="deals-section">
+                <h2>4 Dec 2024</h2>
+                <ul>
+                    <li>Free fries with every burger order.</li>
+                    <li>20% off on all pizzas.</li>
+                    <li>Buy 1 Zinger burger, get a free drink.</li>
+                </ul>
+            </div>
+            
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Pakistani Fast Food offers a variety of delicious dishes inspired by the rich flavors of Pakistan.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: farooqihassan993@gmail.com</li>
+                    <li>Phone: +92 324 0229203</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/munchyfood">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/munchy_f00d/">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.banner img');
+
+        function slideImages() {
+            const currentImage = images[currentImageIndex];
+            currentImage.classList.remove('active');
+            currentImage.classList.add('slide-out');
+
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            const nextImage = images[currentImageIndex];
+
+            nextImage.classList.add('slide-in');
+            setTimeout(() => {
+                nextImage.classList.add('active');
+                nextImage.classList.remove('slide-in');
+                currentImage.classList.remove('slide-out');
+            }, 1000); // Match this timeout to animation duration
+        }
+
+        setInterval(slideImages, 3000); // Change image every 12 seconds
+    
+     
+     const cart = document.getElementById('cart');
+     const cartItems = document.getElementById('cart-items');
+     const cartTotal = document.getElementById('cart-total');
+     
+     let cartData = [];
+     let totalAmount = 0;
+     
+     function addToCart(item, price) {
+         cartData.push({ item, price });
+         totalAmount += price;
+         updateCartUI();
+         cart.style.display = 'block'; // Show the cart
+     }
+     
+     function clearCart() {
+         cartData = [];
+         totalAmount = 0;
+         updateCartUI();
+         cart.style.display = 'none'; // Hide the cart when it's empty
+     }
+     
+     function buyNow(event) {
+         if (cartData.length === 0) {
+             alert("Your cart is empty. Please add items to your cart before proceeding.");
+             event.preventDefault(); // Prevent navigation to the next page
+         }
+     }
+     
+     function updateCartUI() {
+         cartItems.innerHTML = '';
+         cartData.forEach((entry, index) => {
+             const li = document.createElement('li');
+             li.innerHTML = `${entry.item} - PKR ${entry.price} 
+                 <button onclick="removeFromCart(${index})">Remove</button>`;
+             cartItems.appendChild(li);
+         });
+         cartTotal.textContent = `Total: PKR ${totalAmount}`;
+     }
+     
+     function removeFromCart(index) {
+         totalAmount -= cartData[index].price;
+         cartData.splice(index, 1);
+         updateCartUI();
+         if (cartData.length === 0) cart.style.display = 'none'; // Hide the cart if it's empty
+     }
+    </script> 
+    
+</body>
+</html>
